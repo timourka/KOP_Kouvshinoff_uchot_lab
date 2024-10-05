@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KOP_Kouvshinoff_uchot_lab", "KOP_Kouvshinoff_uchot_lab\KOP_Kouvshinoff_uchot_lab.csproj", "{2E249077-61E0-49B5-A21A-CF89816F4305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UchetLabDataModels", "UchetLabDataModels\UchetLabDataModels.csproj", "{F4C3B1E5-01D0-4BAD-81DF-676199EBCC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UchetLabDatabaseImplement", "UchetLabDataBaseImplement\UchetLabDatabaseImplement.csproj", "{DCC5AC0B-94F5-4331-B117-FA6490A4AE93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UchetLabContracts", "UchetLabContracts\UchetLabContracts.csproj", "{3AEF4B96-EA21-4069-9D1E-DC566A9EFCA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UchetLabBusinessLogic", "UchetLabBusinessLogic\UchetLabBusinessLogic.csproj", "{464C46CD-7263-4809-AA02-1545B9ABF0B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E249077-61E0-49B5-A21A-CF89816F4305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E249077-61E0-49B5-A21A-CF89816F4305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E249077-61E0-49B5-A21A-CF89816F4305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E249077-61E0-49B5-A21A-CF89816F4305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C3B1E5-01D0-4BAD-81DF-676199EBCC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C3B1E5-01D0-4BAD-81DF-676199EBCC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C3B1E5-01D0-4BAD-81DF-676199EBCC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C3B1E5-01D0-4BAD-81DF-676199EBCC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC5AC0B-94F5-4331-B117-FA6490A4AE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC5AC0B-94F5-4331-B117-FA6490A4AE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC5AC0B-94F5-4331-B117-FA6490A4AE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC5AC0B-94F5-4331-B117-FA6490A4AE93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEF4B96-EA21-4069-9D1E-DC566A9EFCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEF4B96-EA21-4069-9D1E-DC566A9EFCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEF4B96-EA21-4069-9D1E-DC566A9EFCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEF4B96-EA21-4069-9D1E-DC566A9EFCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464C46CD-7263-4809-AA02-1545B9ABF0B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464C46CD-7263-4809-AA02-1545B9ABF0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464C46CD-7263-4809-AA02-1545B9ABF0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464C46CD-7263-4809-AA02-1545B9ABF0B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF933A41-2D9A-4C9C-B5CD-800133C7F623}
+	EndGlobalSection
+EndGlobal
