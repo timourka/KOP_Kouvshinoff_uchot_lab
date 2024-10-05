@@ -26,22 +26,46 @@ namespace UchetLabBusinessLogic.BuinessLogic
 
         public bool Delete(LabBidingModel model)
         {
-            throw new NotImplementedException();
+            CheckModel(model, false);
+            if (_labStorage.Delete(model) == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         public LabViewModel? ReadElement(LabSearchModel model)
         {
-            throw new NotImplementedException();
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+            var element = _labStorage.GetElement(model);
+            if (element == null)
+            {
+                return null;
+            }
+            return element;
         }
 
         public List<LabViewModel>? ReadList(LabSearchModel? model)
         {
-            throw new NotImplementedException();
+            var list = model == null ? _labStorage.GetFullList() : _labStorage.GetFilteredList(model);
+            if (list == null)
+            {
+                return null;
+            }
+            return list;
         }
 
         public bool Update(LabBidingModel model)
         {
-            throw new NotImplementedException();
+            CheckModel(model);
+            if (_labStorage.Update(model) == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void CheckModel(LabBidingModel model, bool withParams = true)
