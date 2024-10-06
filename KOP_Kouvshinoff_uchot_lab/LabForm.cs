@@ -11,6 +11,12 @@ namespace KOP_Kouvshinoff_uchot_lab
         private IDifficultyLogic _difficultyLogic;
         private ILabLogic _labLogic;
         private int? Id;
+        private bool cancelWithoutQueschions = false;
+
+        private string? themeField;
+        private string? taskField;
+        private string? difField;
+        private double? scrField;
 
         private void LoadDifficulties()
         {
@@ -53,6 +59,8 @@ namespace KOP_Kouvshinoff_uchot_lab
             customComboBoxDifficulty.selectedString = labViewModel.Difficulty;
             controlInputNullableDoubleAverageScore.Value = labViewModel.AverageScore;
             this.Text = "редактирование лабы";
+
+            memFields();
         }
 
         /// <summary>
@@ -69,6 +77,8 @@ namespace KOP_Kouvshinoff_uchot_lab
             buttonSave.Text = "закрыть с созданием";
             buttonCancel.Text = "закрыть без создания";
             this.Text = "создание лабы";
+
+            memFields();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -81,8 +91,6 @@ namespace KOP_Kouvshinoff_uchot_lab
             SaveObject();
             this.Close();
         }
-
-        bool cancelWithoutQueschions = false;
         private void SaveObject()
         {
             cancelWithoutQueschions = true;
@@ -117,15 +125,33 @@ namespace KOP_Kouvshinoff_uchot_lab
                 }
                 MessageBox.Show("Данные успешно сохранены.", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void memFields()
+        {
+            themeField = textBoxTheme.Text;
+            taskField = textBoxTask.Text;
+            difField = customComboBoxDifficulty.selectedString;
+            scrField = controlInputNullableDoubleAverageScore.Value;
+        }
+
+        private bool isAnyChanges()
+        {
+            return themeField != textBoxTheme.Text ||
+                taskField != textBoxTask.Text ||
+                difField != customComboBoxDifficulty.selectedString ||
+                scrField != controlInputNullableDoubleAverageScore.Value;
+        }
+
         private void LabForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (cancelWithoutQueschions)
+                return;
+            if (!isAnyChanges())
                 return;
 
             // Показываем диалог с вопросом "Сохранить изменения?"
