@@ -10,7 +10,6 @@ namespace KOP_Kouvshinoff_uchot_lab
         {
             _labLogic = new LabLogic(SingletonDatabase.LabStorage);
             InitializeComponent();
-            customTree.ContextMenuStrip = contextMenuStrip;
             customTree.Hierarcy = new List<string>
             {
                  "Difficulty",
@@ -59,7 +58,8 @@ namespace KOP_Kouvshinoff_uchot_lab
 
         private void справочникСложностейToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DifficultiesForm difficultiesForm = new DifficultiesForm();
+            difficultiesForm.ShowDialog();
         }
     }
 }
