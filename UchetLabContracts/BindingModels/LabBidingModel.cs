@@ -9,7 +9,7 @@ namespace UchetLabContracts.BindingModels
 
         public string Task { get; set; } = string.Empty;
 
-        public string Dificulty { get; set; } = string.Empty;
+        public string Difficulty { get; set; } = string.Empty;
         public double? AverageScore { get; set; }
     }
 }

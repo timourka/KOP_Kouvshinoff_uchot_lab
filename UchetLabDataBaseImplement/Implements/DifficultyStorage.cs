@@ -6,61 +6,61 @@ using UchetLabDatabaseImplement.Models;
 
 namespace UchetLabDatabaseImplement.Implements
 {
-    public class LabStorage : ILabStorage
+    public class DifficultyStorage : IDifficultyStorage
     {
-        public LabViewModel? Delete(LabBidingModel model)
+        public DifficultyViewModel? Delete(DifficultyBindigModel model)
         {
             using var context = new UchetLabDatabase();
-            var element = context.Labs.FirstOrDefault(rec => rec.Id == model.Id);
+            var element = context.Difficulties.FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)
             {
-                context.Labs.Remove(element);
+                context.Difficulties.Remove(element);
                 context.SaveChanges();
                 return element.GetViewModel;
             }
             return null;
         }
 
-        public LabViewModel? GetElement(LabSearchModel model)
+        public DifficultyViewModel? GetElement(DifficultySearchModel model)
         {
             if (!model.Id.HasValue)
             {
                 return null;
             }
             using var context = new UchetLabDatabase();
-            return context.Labs.FirstOrDefault(x => x.Id == model.Id)?.GetViewModel;
+            return context.Difficulties.FirstOrDefault(x => x.Id == model.Id)?.GetViewModel;
         }
 
-        public List<LabViewModel> GetFilteredList(LabSearchModel model)
+        public List<DifficultyViewModel> GetFilteredList(DifficultySearchModel model)
         {
             using var context = new UchetLabDatabase();
-            return context.Labs
+            return context.Difficulties
             .Select(x => x.GetViewModel)
             .ToList();
         }
 
-        public List<LabViewModel> GetFullList()
+        public List<DifficultyViewModel> GetFullList()
         {
             using var context = new UchetLabDatabase();
-            return context.Labs
+            return context.Difficulties
             .Select(x => x.GetViewModel)
             .ToList();
         }
 
-        public LabViewModel? Insert(LabBidingModel model)
+        public DifficultyViewModel? Insert(DifficultyBindigModel model)
         {
             using var context = new UchetLabDatabase();
             using var transaction = context.Database.BeginTransaction();
             {
                 try
                 {
-                    var newEl = Lab.Create(model);
+                    var newEl = Difficulty.Create(model);
                     if (newEl == null)
                     {
                         transaction.Rollback();
                         return null;
                     }
-                    context.Labs.Add(newEl);
+                    context.Difficulties.Add(newEl);
 
                     context.SaveChanges();
                     context.Database.CommitTransaction();
@@ -75,14 +75,14 @@ namespace UchetLabDatabaseImplement.Implements
             }
         }
 
-        public LabViewModel? Update(LabBidingModel model)
+        public DifficultyViewModel? Update(DifficultyBindigModel model)
         {
             using var context = new UchetLabDatabase();
             using var transaction = context.Database.BeginTransaction();
             {
                 try
                 {
-                    var el = context.Labs.FirstOrDefault(x => x.Id == model.Id);
+                    var el = context.Difficulties.FirstOrDefault(x => x.Id == model.Id);
                     if (el == null)
                     {
                         transaction.Rollback();

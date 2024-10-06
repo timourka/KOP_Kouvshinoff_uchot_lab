@@ -3,7 +3,7 @@ using UchetLabDatabaseImplement.Models;
 
 namespace UchetLabDatabaseImplement
 {
-    public class UchetLabDatabase : DbContext
+    internal class UchetLabDatabase : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -13,6 +13,7 @@ namespace UchetLabDatabaseImplement
             }
             base.OnConfiguring(optionsBuilder);
         }
-        public virtual DbSet<Lab> Labs { set; get; }
+        internal virtual DbSet<Lab> Labs { set; get; }
+        internal virtual DbSet<Difficulty> Difficulties { set; get; }
     }
 }

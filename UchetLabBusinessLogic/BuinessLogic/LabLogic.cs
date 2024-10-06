@@ -9,6 +9,7 @@ namespace UchetLabBusinessLogic.BuinessLogic
     public class LabLogic : ILabLogic
     {
         ILabStorage _labStorage;
+
         public LabLogic(ILabStorage labStorage)
         {
             _labStorage = labStorage;
@@ -86,9 +87,9 @@ namespace UchetLabBusinessLogic.BuinessLogic
             {
                 throw new ArgumentNullException("Нет задания лабораторной", nameof(model.Task));
             }
-            if (string.IsNullOrEmpty(model.Dificulty))
+            if (string.IsNullOrEmpty(model.Difficulty))
             {
-                throw new ArgumentNullException("Нет сложности лабораторной", nameof(model.Dificulty));
+                throw new ArgumentNullException("Нет сложности лабораторной", nameof(model.Difficulty));
             }
         }
     }
