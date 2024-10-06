@@ -79,6 +79,7 @@
             // customTree
             // 
             customTree.AutoSize = true;
+            customTree.ContextMenuStrip = contextMenuStrip;
             customTree.Dock = DockStyle.Fill;
             customTree.Hierarcy = null;
             customTree.Location = new Point(0, 0);
