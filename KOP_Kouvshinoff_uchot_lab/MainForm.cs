@@ -23,12 +23,15 @@ namespace KOP_Kouvshinoff_uchot_lab
 
         private void добавлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LabForm labForm = new LabForm();
+            labForm.ShowDialog();
         }
 
         private void редактированиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // TODO получение айдишника
+            LabForm labForm = new LabForm();
+            labForm.ShowDialog();
         }
 
         private void удалениеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace KOP_Kouvshinoff_uchot_lab
             {
                 return;
             }
-            foreach(var lab in labs)
+            foreach (var lab in labs)
             {
                 customTree.AddNode(lab);
             }
@@ -52,6 +55,11 @@ namespace KOP_Kouvshinoff_uchot_lab
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fillTree();
+        }
+
+        private void справочникСложностейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
