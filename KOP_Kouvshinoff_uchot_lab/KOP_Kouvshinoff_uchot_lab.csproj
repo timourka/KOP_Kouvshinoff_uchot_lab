@@ -12,6 +12,8 @@
     <PackageReference Include="ComponentsLibraryNet60" Version="1.0.0" />
     <PackageReference Include="ControlsLibraryNet60" Version="1.0.0" />
     <PackageReference Include="CustomComponents" Version="1.0.0" />
+    <PackageReference Include="Non_visual_components_Kouvshinoff" Version="1.0.0" />
+    <PackageReference Include="Visual_components_Kouvshinoff" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
