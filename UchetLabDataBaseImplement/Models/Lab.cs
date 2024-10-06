@@ -7,7 +7,7 @@ namespace UchetLabDatabaseImplement.Models
 {
     internal class Lab : ILabModel
     {
-        internal int Id { get; private set; }
+        public int Id { get; private set; }
         [Required]
         public string Theme { get; private set; } = string.Empty;
         [Required]

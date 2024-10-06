@@ -7,7 +7,7 @@ namespace UchetLabDatabaseImplement.Models
 {
     internal class Difficulty : IDifficultyModel
     {
-        internal int Id { get; private set; }
+        public int Id { get; private set; }
         [Required]
         public string Text { get; private set; } = string.Empty;
         internal static Difficulty? Create(DifficultyBindigModel model)

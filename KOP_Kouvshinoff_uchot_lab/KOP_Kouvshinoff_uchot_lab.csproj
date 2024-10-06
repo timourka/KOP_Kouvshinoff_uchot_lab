@@ -12,6 +12,10 @@
     <PackageReference Include="ComponentsLibraryNet60" Version="1.0.0" />
     <PackageReference Include="ControlsLibraryNet60" Version="1.0.0" />
     <PackageReference Include="CustomComponents" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Non_visual_components_Kouvshinoff" Version="1.0.0" />
     <PackageReference Include="Visual_components_Kouvshinoff" Version="1.0.0" />
   </ItemGroup>
@@ -19,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\UchetLabBusinessLogic\UchetLabBusinessLogic.csproj" />
     <ProjectReference Include="..\UchetLabContracts\UchetLabContracts.csproj" />
+    <ProjectReference Include="..\UchetLabDataBaseImplement\UchetLabDatabaseImplement.csproj" />
   </ItemGroup>
 
 </Project>
