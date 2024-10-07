@@ -2,7 +2,6 @@
 using UchetLabBusinessLogic.BuinessLogic;
 using UchetLabContracts.BindingModels;
 using UchetLabContracts.BusinessLogicsContracts;
-using UchetLabContracts.ViewModels;
 
 namespace KOP_Kouvshinoff_uchot_lab
 {
@@ -21,7 +20,7 @@ namespace KOP_Kouvshinoff_uchot_lab
             {
                 HelpingLab helpingLab = new()
                 {
-                    Id = lab.Id,
+                    Id = lab.Id.ToString(),
                     Theme = lab.Theme,
                     Task = lab.Task,
                     Difficulty = lab.Difficulty,
@@ -53,12 +52,12 @@ namespace KOP_Kouvshinoff_uchot_lab
         private void EditSelectedRecord()
         {
             HelpingLab helpingLab = customTree.GetSelectedNode<HelpingLab>();
-            if (helpingLab.Id == -1)
+            if (helpingLab.id == -1)
             {
                 MessageBox.Show("пожалуйста выберите id", "нет id", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            LabForm labForm = new LabForm(helpingLab.Id);
+            LabForm labForm = new LabForm(helpingLab.id);
             labForm.ShowDialog();
             fillTree();
         }
@@ -66,14 +65,14 @@ namespace KOP_Kouvshinoff_uchot_lab
         private void DeleteSelectedRecord()
         {
             HelpingLab helpingLab = customTree.GetSelectedNode<HelpingLab>();
-            if (helpingLab.Id == -1)
+            if (helpingLab.id == -1)
             {
                 MessageBox.Show("пожалуйста выберите id", "нет id", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             _labLogic.Delete(new LabBidingModel()
             {
-                Id = helpingLab.Id,
+                Id = helpingLab.id,
             });
             fillTree();
         }
@@ -153,6 +152,21 @@ namespace KOP_Kouvshinoff_uchot_lab
                         break;
                 }
             }
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateSimpleDocument();
+        }
+
+        private void wordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateDocumentWithTable();
+        }
+
+        private void pdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateDocumentWithChart();
         }
     }
 }

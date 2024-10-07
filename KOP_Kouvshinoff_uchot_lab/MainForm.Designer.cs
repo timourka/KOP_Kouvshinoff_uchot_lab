@@ -37,6 +37,10 @@
             customTree = new KOP_Labs.CustomTree();
             menuStrip1 = new MenuStrip();
             справочникСложностейToolStripMenuItem = new ToolStripMenuItem();
+            созданиеДокументаToolStripMenuItem = new ToolStripMenuItem();
+            excelToolStripMenuItem = new ToolStripMenuItem();
+            wordToolStripMenuItem = new ToolStripMenuItem();
+            pdfToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -90,7 +94,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { справочникСложностейToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { справочникСложностейToolStripMenuItem, созданиеДокументаToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -103,6 +107,34 @@
             справочникСложностейToolStripMenuItem.Size = new Size(155, 20);
             справочникСложностейToolStripMenuItem.Text = "справочник сложностей";
             справочникСложностейToolStripMenuItem.Click += справочникСложностейToolStripMenuItem_Click;
+            // 
+            // созданиеДокументаToolStripMenuItem
+            // 
+            созданиеДокументаToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { excelToolStripMenuItem, wordToolStripMenuItem, pdfToolStripMenuItem });
+            созданиеДокументаToolStripMenuItem.Name = "созданиеДокументаToolStripMenuItem";
+            созданиеДокументаToolStripMenuItem.Size = new Size(130, 20);
+            созданиеДокументаToolStripMenuItem.Text = "создание документа";
+            // 
+            // excelToolStripMenuItem
+            // 
+            excelToolStripMenuItem.Name = "excelToolStripMenuItem";
+            excelToolStripMenuItem.Size = new Size(451, 22);
+            excelToolStripMenuItem.Text = "документ в Excel по лабораторным, которые не сдавали студенты";
+            excelToolStripMenuItem.Click += excelToolStripMenuItem_Click;
+            // 
+            // wordToolStripMenuItem
+            // 
+            wordToolStripMenuItem.Name = "wordToolStripMenuItem";
+            wordToolStripMenuItem.Size = new Size(451, 22);
+            wordToolStripMenuItem.Text = "отчет в Word с информацией по всем лабораторным";
+            wordToolStripMenuItem.Click += wordToolStripMenuItem_Click;
+            // 
+            // pdfToolStripMenuItem
+            // 
+            pdfToolStripMenuItem.Name = "pdfToolStripMenuItem";
+            pdfToolStripMenuItem.Size = new Size(451, 22);
+            pdfToolStripMenuItem.Text = "Круговая диаграмма в Pdf, сколько сдаваемых лабораторных какой";
+            pdfToolStripMenuItem.Click += pdfToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -133,5 +165,9 @@
         private ToolStripMenuItem обновитьToolStripMenuItem;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem справочникСложностейToolStripMenuItem;
+        private ToolStripMenuItem созданиеДокументаToolStripMenuItem;
+        private ToolStripMenuItem excelToolStripMenuItem;
+        private ToolStripMenuItem wordToolStripMenuItem;
+        private ToolStripMenuItem pdfToolStripMenuItem;
     }
 }
