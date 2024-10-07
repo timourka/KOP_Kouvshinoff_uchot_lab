@@ -1,8 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using KOP_Kouvshinoff_uchot_lab.HelpingModels;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.VisualBasic;
-using Non_visual_components_Kouvshinoff;
 using UchetLabBusinessLogic.BuinessLogic;
 using UchetLabContracts.BindingModels;
 using UchetLabContracts.BusinessLogicsContracts;
@@ -160,6 +157,43 @@ namespace KOP_Kouvshinoff_uchot_lab
 
         private void CreateDocumentWithChart()
         {
+            using var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    if (labs == null)
+                    {
+                        MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    Dictionary<String, double> KDif = new();
+                    foreach(var lab in labs)
+                    {
+                        if (KDif.ContainsKey(lab.Difficulty))
+                        {
+                            KDif[lab.Difficulty]++;
+                        }
+                        else
+                        {
+                            KDif.Add(lab.Difficulty, 1);
+                        }
+                    }
+                    List<(double, string)> items = KDif.Select(x => (x.Value / labs.Count, x.Key) ).ToList();
+
+                    pdfPieChart.CreatePieChart(new CustomComponents.Helpers.DataForPieChart(
+                        dialog.FileName, "сколько сдаваемых лабораторных какой сложности", "сложности лабораторных", 
+                        CustomComponents.Helpers.DiagramLegendEnum.Bottom,  "legend", items));
+
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void добавлениеToolStripMenuItem_Click(object sender, EventArgs e)

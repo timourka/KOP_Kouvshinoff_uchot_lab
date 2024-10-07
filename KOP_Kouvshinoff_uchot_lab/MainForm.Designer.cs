@@ -43,6 +43,7 @@
             pdfToolStripMenuItem = new ToolStripMenuItem();
             customComponentExcelBigText = new Non_visual_components_Kouvshinoff.CustomComponentExcelBigText(components);
             componentDocumentWithTableMultiHeaderWord = new ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord(components);
+            pdfPieChart = new CustomComponents.NonVisualComponents.PdfPieChart(components);
             contextMenuStrip.SuspendLayout();
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -173,5 +174,6 @@
         private ToolStripMenuItem pdfToolStripMenuItem;
         private Non_visual_components_Kouvshinoff.CustomComponentExcelBigText customComponentExcelBigText;
         private ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord componentDocumentWithTableMultiHeaderWord;
+        private CustomComponents.NonVisualComponents.PdfPieChart pdfPieChart;
     }
 }
