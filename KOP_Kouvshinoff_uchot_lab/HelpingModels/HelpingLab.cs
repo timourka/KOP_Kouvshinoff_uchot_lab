@@ -28,11 +28,11 @@
         {
             get
             {
-                return averageScore.HasValue ? averageScore.Value.ToString() : "null";
+                return averageScore.HasValue ? averageScore.Value.ToString() : "не сдавали";
             }
             set
             {
-                if (value.Equals("null"))
+                if (value.Equals("не сдавали"))
                 {
                     averageScore = null;
                 }

@@ -35,14 +35,16 @@
             удалениеToolStripMenuItem = new ToolStripMenuItem();
             обновитьToolStripMenuItem = new ToolStripMenuItem();
             customTree = new KOP_Labs.CustomTree();
-            menuStrip1 = new MenuStrip();
+            menuStrip = new MenuStrip();
             справочникСложностейToolStripMenuItem = new ToolStripMenuItem();
             созданиеДокументаToolStripMenuItem = new ToolStripMenuItem();
             excelToolStripMenuItem = new ToolStripMenuItem();
             wordToolStripMenuItem = new ToolStripMenuItem();
             pdfToolStripMenuItem = new ToolStripMenuItem();
+            customComponentExcelBigText = new Non_visual_components_Kouvshinoff.CustomComponentExcelBigText(components);
+            componentDocumentWithTableMultiHeaderWord = new ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord(components);
             contextMenuStrip.SuspendLayout();
-            menuStrip1.SuspendLayout();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // contextMenuStrip
@@ -92,14 +94,14 @@
             customTree.Size = new Size(776, 413);
             customTree.TabIndex = 1;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { справочникСложностейToolStripMenuItem, созданиеДокументаToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 2;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { справочникСложностейToolStripMenuItem, созданиеДокументаToolStripMenuItem });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(800, 24);
+            menuStrip.TabIndex = 2;
+            menuStrip.Text = "menuStrip1";
             // 
             // справочникСложностейToolStripMenuItem
             // 
@@ -141,16 +143,16 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip);
             Controls.Add(customTree);
             KeyPreview = true;
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = menuStrip;
             Name = "MainForm";
             Text = "Main";
             KeyDown += MainForm_KeyDown;
             contextMenuStrip.ResumeLayout(false);
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,11 +165,13 @@
         private ToolStripMenuItem редактированиеToolStripMenuItem;
         private ToolStripMenuItem удалениеToolStripMenuItem;
         private ToolStripMenuItem обновитьToolStripMenuItem;
-        private MenuStrip menuStrip1;
+        private MenuStrip menuStrip;
         private ToolStripMenuItem справочникСложностейToolStripMenuItem;
         private ToolStripMenuItem созданиеДокументаToolStripMenuItem;
         private ToolStripMenuItem excelToolStripMenuItem;
         private ToolStripMenuItem wordToolStripMenuItem;
         private ToolStripMenuItem pdfToolStripMenuItem;
+        private Non_visual_components_Kouvshinoff.CustomComponentExcelBigText customComponentExcelBigText;
+        private ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord componentDocumentWithTableMultiHeaderWord;
     }
 }

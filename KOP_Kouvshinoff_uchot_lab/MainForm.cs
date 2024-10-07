@@ -1,13 +1,30 @@
-﻿using KOP_Kouvshinoff_uchot_lab.HelpingModels;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using KOP_Kouvshinoff_uchot_lab.HelpingModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualBasic;
+using Non_visual_components_Kouvshinoff;
 using UchetLabBusinessLogic.BuinessLogic;
 using UchetLabContracts.BindingModels;
 using UchetLabContracts.BusinessLogicsContracts;
+using UchetLabContracts.SearchModels;
+using UchetLabContracts.ViewModels;
 
 namespace KOP_Kouvshinoff_uchot_lab
 {
     public partial class MainForm : Form
     {
         private ILabLogic _labLogic;
+        private HelpingLab toHelpingLab(LabViewModel labViewModel)
+        {
+            return new HelpingLab()
+            {
+                Id = labViewModel.Id.ToString(),
+                Theme = labViewModel.Theme,
+                Task = labViewModel.Task,
+                Difficulty = labViewModel.Difficulty,
+                AverageScore = labViewModel.AverageScore.HasValue ? labViewModel.AverageScore.Value.ToString() : "не сдавали",
+            };
+        }
         private void fillTree()
         {
             var labs = _labLogic.ReadList(new());
@@ -18,15 +35,7 @@ namespace KOP_Kouvshinoff_uchot_lab
             customTree.Clear();
             foreach (var lab in labs)
             {
-                HelpingLab helpingLab = new()
-                {
-                    Id = lab.Id.ToString(),
-                    Theme = lab.Theme,
-                    Task = lab.Task,
-                    Difficulty = lab.Difficulty,
-                    AverageScore = lab.AverageScore.HasValue ? lab.AverageScore.Value.ToString() : "null",
-                };
-                customTree.AddNode(helpingLab);
+                customTree.AddNode(toHelpingLab(lab));
             }
         }
         public MainForm()
@@ -79,10 +88,74 @@ namespace KOP_Kouvshinoff_uchot_lab
 
         private void CreateSimpleDocument()
         {
+            using var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    if (labs == null)
+                    {
+                        MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    customComponentExcelBigText.createExcel(dialog.FileName, "Excel по лабораторным, которые не сдавали студенты",
+                    labs.Where(x => !x.AverageScore.HasValue).Select(x => $"тема: {x.Theme}, задание: {x.Task}").ToArray());
+
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void CreateDocumentWithTable()
         {
+            using var dialog = new SaveFileDialog { Filter = "doc|*.docx" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    if (labs == null)
+                    {
+                        MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    var headers = new List<(int ColumnIndex, int RowIndex, string Header, string PropertyName)>()
+                    {
+                            new(){ ColumnIndex = 0, RowIndex = 0, Header = "ID", PropertyName = "Id"},
+                            new(){ ColumnIndex = 1, RowIndex = 0, Header = "тема лабораторной", PropertyName = "Theme"},
+                            new(){ ColumnIndex = 2, RowIndex = 0, Header = "сложность работы", PropertyName = "Difficulty"},
+                            new(){ ColumnIndex = 3, RowIndex = 0, Header = "средний балл сдававших", PropertyName = "AverageScore"},
+                        };
+                    var columnsWidth = new List<(int Column, int Row)>();
+                    for ( int i = 0; i < 4; i++ )
+                    {
+                        columnsWidth.Add(new() { Column = 10, Row = 10 });
+                    }
+                    var config = new ComponentsLibraryNet60.Models.ComponentDocumentWithTableHeaderDataConfig<HelpingLab>()
+                    {
+                        FilePath = dialog.FileName,
+                        Header = "отчет в Word с информацией по всем лабораторным",
+                        UseUnion = false,
+                        Data = labs.Select(x => toHelpingLab(x)).ToList(),
+                        ColumnsRowsDataCount = new() { Columns = 4, Rows = labs.Count },
+                        Headers = headers,
+                        ColumnsRowsWidth = columnsWidth,
+                        ColumnUnion = new List<(int StartIndex, int Count)>(),
+                    };
+                    componentDocumentWithTableMultiHeaderWord.CreateDoc(config);
+
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void CreateDocumentWithChart()
