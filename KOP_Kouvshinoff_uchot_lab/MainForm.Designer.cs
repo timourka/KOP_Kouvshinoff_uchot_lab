@@ -78,14 +78,14 @@
             // 
             // customTree
             // 
+            customTree.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             customTree.AutoSize = true;
             customTree.ContextMenuStrip = contextMenuStrip;
-            customTree.Dock = DockStyle.Fill;
             customTree.Hierarcy = null;
-            customTree.Location = new Point(0, 0);
+            customTree.Location = new Point(12, 26);
             customTree.Margin = new Padding(3, 2, 3, 2);
             customTree.Name = "customTree";
-            customTree.Size = new Size(800, 450);
+            customTree.Size = new Size(776, 413);
             customTree.TabIndex = 1;
             // 
             // menuStrip1
@@ -111,9 +111,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
             Controls.Add(customTree);
+            KeyPreview = true;
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "Main";
+            KeyDown += MainForm_KeyDown;
             contextMenuStrip.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
