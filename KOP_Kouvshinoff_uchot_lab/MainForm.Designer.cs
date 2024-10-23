@@ -161,7 +161,7 @@
         #endregion
 
         private ContextMenuStrip contextMenuStrip;
-        private KOP_Labs.CustomTree customTree;
+        public KOP_Labs.CustomTree customTree;
         private ToolStripMenuItem добавлениеToolStripMenuItem;
         private ToolStripMenuItem редактированиеToolStripMenuItem;
         private ToolStripMenuItem удалениеToolStripMenuItem;
@@ -172,8 +172,8 @@
         private ToolStripMenuItem excelToolStripMenuItem;
         private ToolStripMenuItem wordToolStripMenuItem;
         private ToolStripMenuItem pdfToolStripMenuItem;
-        private Non_visual_components_Kouvshinoff.CustomComponentExcelBigText customComponentExcelBigText;
-        private ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord componentDocumentWithTableMultiHeaderWord;
-        private CustomComponents.NonVisualComponents.PdfPieChart pdfPieChart;
+        public Non_visual_components_Kouvshinoff.CustomComponentExcelBigText customComponentExcelBigText;
+        public ComponentsLibraryNet60.DocumentWithTable.ComponentDocumentWithTableMultiHeaderWord componentDocumentWithTableMultiHeaderWord;
+        public CustomComponents.NonVisualComponents.PdfPieChart pdfPieChart;
     }
 }

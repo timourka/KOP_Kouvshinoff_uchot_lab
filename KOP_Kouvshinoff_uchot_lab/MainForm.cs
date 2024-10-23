@@ -10,8 +10,8 @@ namespace KOP_Kouvshinoff_uchot_lab
 {
     public partial class MainForm : Form
     {
-        private ILabLogic _labLogic;
-        private HelpingLab toHelpingLab(LabViewModel labViewModel)
+        public ILabLogic labLogic;
+        public HelpingLab toHelpingLab(LabViewModel labViewModel)
         {
             return new HelpingLab()
             {
@@ -22,9 +22,9 @@ namespace KOP_Kouvshinoff_uchot_lab
                 AverageScore = labViewModel.AverageScore.HasValue ? labViewModel.AverageScore.Value.ToString() : "не сдавали",
             };
         }
-        private void fillTree()
+        public void fillTree()
         {
-            var labs = _labLogic.ReadList(new());
+            var labs = labLogic.ReadList(new());
             if (labs == null)
             {
                 return;
@@ -37,7 +37,7 @@ namespace KOP_Kouvshinoff_uchot_lab
         }
         public MainForm()
         {
-            _labLogic = new LabLogic(SingletonDatabase.LabStorage);
+            labLogic = new LabLogic(SingletonDatabase.LabStorage);
             InitializeComponent();
             customTree.Hierarcy = new List<string>
             {
@@ -76,21 +76,21 @@ namespace KOP_Kouvshinoff_uchot_lab
                 MessageBox.Show("пожалуйста выберите id", "нет id", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            _labLogic.Delete(new LabBidingModel()
+            labLogic.Delete(new LabBidingModel()
             {
                 Id = helpingLab.id,
             });
             fillTree();
         }
 
-        private void CreateSimpleDocument()
+        public void CreateSimpleDocument()
         {
             using var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    var labs = labLogic.ReadList(new LabSearchModel());
                     if (labs == null)
                     {
                         MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -108,14 +108,14 @@ namespace KOP_Kouvshinoff_uchot_lab
             }
         }
 
-        private void CreateDocumentWithTable()
+        public void CreateDocumentWithTable()
         {
             using var dialog = new SaveFileDialog { Filter = "doc|*.docx" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    var labs = labLogic.ReadList(new LabSearchModel());
                     if (labs == null)
                     {
                         MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,14 +155,14 @@ namespace KOP_Kouvshinoff_uchot_lab
             }
         }
 
-        private void CreateDocumentWithChart()
+        public void CreateDocumentWithChart()
         {
             using var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    var labs = _labLogic.ReadList(new LabSearchModel());
+                    var labs = labLogic.ReadList(new LabSearchModel());
                     if (labs == null)
                     {
                         MessageBox.Show("не удалось считать данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
